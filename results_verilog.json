@@ -1003,5 +1003,20 @@
         "prompted":true,
         "size":7.0,
         "time":20240721
+    },
+    "o1-preview-2024-09-12":{
+        "link":"null",
+        "open-data":"NONE",
+        "pass@1":{
+            "verilogeval_machine":79.27,
+            "verilogeval_human":75,
+            "RTLLM_V1_0_Syntax":null,
+            "RTLLM_V1_0_Func":null,
+            "RTLLM_V1_1_Syntax":100.0,
+            "RTLLM_V1_1_Func":82.76
+        },
+        "prompted":false,
+        "size":null,
+        "time":0
     }
 }
