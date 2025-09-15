@@ -137,7 +137,7 @@
       <h1 class="text-nowrap mt-5">🏆 Chip Design LLM Zoo 🏆</h1>
       <h3 class="fw-light text-nowrap">
         <small id="warning"
-          >-------- Verilog Leaderboard --------<br
+          >———— Verilog Leaderboard ————<br
         /></small>
       </h3>
       <div class="btn-group" role="group" id="Benchmark">
@@ -167,6 +167,14 @@
         <label class="btn btn-outline-primary" for="RTLLM_V2_Func_pass@5">RTLLM V2 Func Pass@5</label>
         <input type="radio" class="btn-check" name="btnradio" id="verilogeval_V2" />
         <label class="btn btn-outline-primary" for="verilogeval_V2">VerilogEval V2</label>
+        <input type="radio" class="btn-check" name="btnradio" id="realbench_module_syntax" />
+        <label class="btn btn-outline-primary" for="realbench_module_syntax">RealBench Module Syntax</label>
+        <input type="radio" class="btn-check" name="btnradio" id="realbench_module_func" />
+        <label class="btn btn-outline-primary" for="realbench_module_func">RealBench Module Func</label>
+        <input type="radio" class="btn-check" name="btnradio" id="realbench_system_syntax" />
+        <label class="btn btn-outline-primary" for="realbench_system_syntax">RealBench System Syntax</label>
+        <input type="radio" class="btn-check" name="btnradio" id="realbench_system_func" />
+        <label class="btn btn-outline-primary" for="realbench_system_func">RealBench System Func</label>
       </div>
       <div id="chart" style="width: 90%; height: 600px"></div>
       <div class="size-slider-container">
@@ -357,7 +365,11 @@
                       "RTLLM_V2_Func": parseValue(values[15], 'float'),
                       "RTLLM_V2_Syntax_pass@5": parseValue(values[16], 'float'),
                       "RTLLM_V2_Func_pass@5": parseValue(values[17], 'float'),
-                      "verilogeval_V2": parseValue(values[18], 'float')
+                      "verilogeval_V2": parseValue(values[18], 'float'),
+                      "realbench_module_syntax":parseValue(values[19],'float'),
+                      "realbench_module_func":parseValue(values[20],'float'),
+                      "realbench_system_syntax":parseValue(values[21],'float'),
+                      "realbench_system_func":parseValue(values[22],'float'),
                   }
               };
           }
@@ -762,6 +774,10 @@
       const rtllm2syntaxPass5Radio = document.getElementById("RTLLM_V2_Syntax_pass@5");
       const rtllm2funcPass5Radio = document.getElementById("RTLLM_V2_Func_pass@5");
       const verilogevalV2Radio = document.getElementById("verilogeval_V2");
+      const realbenchModuleSyntaxRadio = document.getElementById("realbench_module_syntax");
+      const realbenchModuleFuncRadio = document.getElementById("realbench_module_func");
+      const realbenchSystemSyntaxRadio = document.getElementById("realbench_system_syntax");
+      const realbenchSystemFuncRadio = document.getElementById("realbench_system_func");
 
       verilogeval_humanRadio.addEventListener("click", function () {
         clearTable();
@@ -810,6 +826,7 @@
         clearChart();
         displayChart("RTLLM_V1_1_Func");
       });
+
       rtllm11syntaxPass5Radio.addEventListener("click", function () {
         clearTable();
         displayTable(originTable, "RTLLM_V1_1_Func_pass@5");
@@ -863,6 +880,38 @@
         displayTable(originTable, "verilogeval_V2");
         clearChart();
         displayChart("verilogeval_V2");
+      });
+
+      realbenchModuleSyntaxRadio.addEventListener("click", function () {
+        clearTable();
+        displayTable(originTable, "realbench_module_func");
+        displayTable(plusedTable, "realbench_module_syntax");
+        clearChart();
+        displayChart("realbench_module_syntax");
+      });
+
+      realbenchModuleFuncRadio.addEventListener("click", function () {
+        clearTable();
+        displayTable(originTable, "realbench_module_func");
+        displayTable(plusedTable, "realbench_module_syntax");
+        clearChart();
+        displayChart("realbench_module_func");
+      });
+
+      realbenchSystemSyntaxRadio.addEventListener("click", function () {
+        clearTable();
+        displayTable(originTable, "realbench_system_func");
+        displayTable(plusedTable, "realbench_system_syntax");
+        clearChart();
+        displayChart("realbench_system_syntax");
+      });
+
+      realbenchSystemFuncRadio.addEventListener("click", function () {
+        clearTable();
+        displayTable(originTable, "realbench_system_func");
+        displayTable(plusedTable, "realbench_system_syntax");
+        clearChart();
+        displayChart("realbench_system_func");
       });
       const sizeSlider = document.getElementById("sizeSlider");
       const sizeValue = document.getElementById("sizeValue");
